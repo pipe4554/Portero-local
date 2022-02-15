@@ -2,6 +2,22 @@ package app;
 
 public class Persona extends Thread{
 	private String Nombre;
+	private Portero portero;
+	
+	/*
+	 * Constructor de clase normal
+	 */
+	public Persona(String nombre,Portero portero) {
+		this.Nombre = nombre;
+		this.portero = portero;
+		
+	}
+	/*
+	 * Constructor de personas que surgieron de un error
+	 */
+	public Persona(String ErrorNom) {
+		this.Nombre = ErrorNom;
+	}
 	
 	@Override
 	public void run() {
@@ -14,11 +30,15 @@ public class Persona extends Thread{
 		this.sale();
 	}
 	
-	//Metodos para limpieza de código
-	public void entra() { 
+	//Metodos para limpieza de cÃ³digo
+	public void entra(Persona persona) throws InterruptedException { 
 		System.out.println("soy " + Nombre + " y estoy entrando");
+		portero.putItem(persona);
+		
 	}
 	public void sale() {
 		System.out.println("soy " + Nombre + " y estoy saliendo");
 	}
+	
+	
 }
