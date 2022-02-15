@@ -1,15 +1,13 @@
 package app;
 
-import java.util.ArrayList;
-
 import java.util.concurrent.Semaphore;
 
 public class Portero {
-	private static final int MAX_AVAILABLE = Edificio.getAFORO_MAX(); //tamaño maximo del aforo
+	private static final int MAX_AVAILABLE = Edificio.getAFORO_MAX(); //tamaÃ±o maximo del aforo
 	private final Semaphore available = new Semaphore(MAX_AVAILABLE, true); // el semaforo
 
 	
-	protected ArrayList<Persona> Aforo = new ArrayList<Persona>();
+	protected Edificio edificio = new Edificio();
 
 	protected boolean[] used = new boolean[MAX_AVAILABLE];
 
@@ -32,17 +30,17 @@ public class Portero {
 		for (int i = 0; i < MAX_AVAILABLE; ++i) {
 			if (!used[i]) {
 				used[i] = true;
-				return Aforo.get(i);
+				return edificio.getPersona(i);
 			}
 		}
-		Persona persona = new Persona(null);
+		Persona persona = new Persona("error");
 		return persona; // not reached
 	}
 
 	protected synchronized boolean markAsUnused(Persona persona) {
 		for (int i = 0; i < MAX_AVAILABLE; ++i) {
 			if (!used[i]) {
-				Aforo.set(i, persona);
+				edificio.setPersona(i, persona);
 				return true;
 			}
 
