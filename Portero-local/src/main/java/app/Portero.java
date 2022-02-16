@@ -30,6 +30,7 @@ public class Portero {
 		for (int i = 0; i < MAX_AVAILABLE; ++i) {
 			if (!used[i]) {
 				used[i] = true;
+				edificio.sale();
 				return edificio.getPersona(i);
 			}
 		}
@@ -41,6 +42,7 @@ public class Portero {
 		for (int i = 0; i < MAX_AVAILABLE; ++i) {
 			if (!used[i]) {
 				edificio.setPersona(i, persona);
+				edificio.entra();
 				return true;
 			}
 
