@@ -38,6 +38,7 @@ public class Persona extends Thread {
 			
 		} catch (InterruptedException Ie) {
 			Ie.printStackTrace();
+			System.out.println();
 		}
 	}
 	
@@ -45,11 +46,12 @@ public class Persona extends Thread {
 		this.persona = persona;
 	}
 
-	public static void CrearHiloPersona(String nombre, Portero portero) {
+	public static void CrearHiloPersona(String nombre, Portero portero) throws InterruptedException { //Metodo estatico de crecion de hilos
 		 Persona persona = new Persona(nombre, portero);
 		 persona.setPersona(persona);
 		 
 		 persona.start();
+		 persona.join();
 		
 	}
 	
