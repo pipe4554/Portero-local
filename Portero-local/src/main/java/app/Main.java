@@ -2,15 +2,13 @@ package app;
 
 public class Main {
 
-	public static void main(String[] args) {
-		System.out.println("Hola");
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public static void main(String[] args) throws InterruptedException {
+		Portero portero = new Portero();
+		
+		for (int i = 0; i < 100; i++) {
+			String nombre = "pedro" + i;
+			Persona.CrearHiloPersona(nombre , portero);
 		}
-		System.out.println("Adios");
 	}
 
 }
