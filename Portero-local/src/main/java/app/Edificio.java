@@ -35,7 +35,11 @@ public class Edificio {
 		
 	}
 	
-	public Persona setPersona(int i, Persona persona) {
-		return Aforo.set(i, persona);
+	public int getAforo_actual() {
+		return Aforo_actual;
+	}
+	
+	public void addPersona(Persona persona) {
+		Aforo.add(persona);
 	}
 }
