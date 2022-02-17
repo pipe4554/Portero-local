@@ -12,14 +12,12 @@ public class Portero {
 	protected boolean[] used = new boolean[MAX_AVAILABLE];
 
 	public Persona getItem() throws InterruptedException {
-		//el hilo "pide turno"
-		available.acquire();
+		available.acquire(); //el hilo "pide turno"
 		return getNextAvailableItem();
 	}
 
 	public void putItem(Persona persona) throws InterruptedException {
-		//el hilo "pide turno"
-		available.acquire();
+		available.acquire(); //el hilo "pide turno"
 		if (markAsUnused(persona)) {
 			available.release();
 		}
@@ -31,6 +29,7 @@ public class Portero {
 			if (!used[i]) {
 				used[i] = true;
 				edificio.sale();
+				System.out.println("Aforo actual: " + edificio.getAforo_actual());
 				return edificio.getPersona(i);
 			}
 		}
@@ -41,8 +40,9 @@ public class Portero {
 	protected synchronized boolean markAsUnused(Persona persona) {
 		for (int i = 0; i < MAX_AVAILABLE; ++i) {
 			if (!used[i]) {
-				edificio.setPersona(i, persona);
+				edificio.addPersona(persona);
 				edificio.entra();
+				System.out.println("Aforo actual: " + edificio.getAforo_actual()); 
 				return true;
 			}
 
