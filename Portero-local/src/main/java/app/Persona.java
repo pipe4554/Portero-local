@@ -5,7 +5,7 @@ public class Persona extends Thread {
 	private Portero portero; // portero/semáforo
 	private Persona persona; //Persona para implementar en los metodos 
 
-	/*
+	/**
 	 * Constructor de clase normal
 	 */
 	public Persona(String nombre, Portero portero) {
@@ -14,7 +14,7 @@ public class Persona extends Thread {
 
 	}
 
-	/*
+	/**
 	 * Constructor de personas que surgieron de un error
 	 */
 	public Persona(String ErrorNom) {
@@ -22,14 +22,14 @@ public class Persona extends Thread {
 	}
 
 	/*
-	 * Metodos
+	 * Metodo run para inicio de hilos 
 	 */
 	@Override
 	public void run() {
 		try {
 			
 			System.out.println("soy " + Nombre + " y estoy entrando");
-			portero.putItem(persona);
+			portero.putItem(persona); // Entra una persona al edificio atravez del portero
 			
 			Thread.sleep(2 * 1000);
 			
@@ -41,12 +41,17 @@ public class Persona extends Thread {
 			System.out.println();
 		}
 	}
-	
+	/**
+	 * Metodo para instanciar la propia clase persona, asi poder crear y lanzar los hilos de manera statica desde la propia clase
+	 */
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
-
-	public static void CrearHiloPersona(String nombre, Portero portero) throws InterruptedException { //Metodo estatico de crecion de hilos
+	/**
+	 * Metodo estático de creación de hilos.
+	 * Crea hilos de manera automatica sin necesidad de crearlos en Main
+	 */
+	public static void CrearHiloPersona(String nombre, Portero portero) throws InterruptedException {
 		 Persona persona = new Persona(nombre, portero);
 		 persona.setPersona(persona);
 		 
