@@ -9,6 +9,7 @@ public class Main {
 			String nombre = "pedro" + i;
 			Persona.CrearHiloPersona(nombre , portero);
 		}
+		//fallo en los limites de los Arrays
 	}
 
 }
