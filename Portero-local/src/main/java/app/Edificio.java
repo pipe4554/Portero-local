@@ -6,9 +6,9 @@ import java.util.List;
 public class Edificio {
 	private static final int AFORO_MAX=31; // Aforo maximo del local el cual es invariable y siempre es 31, por lo tanto no hace falta protegerlo
 	private List<Persona> Aforo = new ArrayList<Persona>(); // representacion fisica del aforo actual el cual guarda personas  
-	private int Aforo_actual=0; //representacion numerica del aforo actual, sirve solo para representar ese valor y no altera ninguna otra operaciÃ³n
+	private int Aforo_actual=0; //representacion numerica del aforo actual, sirve solo para representar ese valor y no altera ninguna otra operacion
 	/*
-	 * variable estatica del aforo total al final del dÃ­a/programa, se sumara en la operaciÃ³n de Entrada()
+	 * variable estatica del aforo total al final del programa, se sumara en la operacion de Entrada()
 	 *  y la compartira toda la clase, puede ser una variable no estatica para tratarlo de manera mas simple,
 	 *   pero a la vez puede producir errores a la hora del recuento
 	 */
