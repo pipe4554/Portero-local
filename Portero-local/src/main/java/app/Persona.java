@@ -31,7 +31,7 @@ public class Persona extends Thread {
 			System.out.println("soy " + Nombre + " y estoy entrando");
 			portero.putItem(persona); // Entra una persona al edificio atravez del portero
 			
-			Thread.sleep(2 * 1000);
+			Thread.sleep(1 * 1000);
 			
 			System.out.println("soy " + Nombre + " y estoy saliendo");
 			portero.getItem();
