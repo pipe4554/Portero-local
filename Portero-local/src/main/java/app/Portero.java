@@ -52,12 +52,11 @@ public class Portero {
 	 * Metodo para obtener el permiso del semaforo para sacar una persona que se
 	 * encuentra en la cola.
 	 * 
-	 * @return metodo para sacar persona
 	 * @throws InterruptedException
 	 */
-	public Persona getItem() throws InterruptedException {
+	public void getItem() throws InterruptedException {
 		available.acquire(); // el hilo "pide turno"
-		return getNextAvailableItem();
+		this.getNextAvailableItem();
 	}
 
 	/**
